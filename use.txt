@@ -1,0 +1,67 @@
+sudo chmod 777 /dev/ttyTHS1
+cd ~
+source rl2/bin/activate
+cd blockage_avoidance
+python3 blockage_avoidance.py
+
+第一次测试结果：
+前方有限长度障碍物能够识别且转向，但转向角度不够大，且反应时间不够的情况下无法完成转向；
+前方无限长障碍物（如墙体）转向一定角度后超过超声波测量距离，会停止转向，且车轮自动纠偏功能会使其卡在墙边无法转出
+
+改进设想：
+设计神经网络实现图像检测，对不同障碍物分类处理
+
+第二次测试结果：
+利用rl能够实现避障，但出现了以下几个问题
+1.在不对网络作特定操作的情况下，小车始终选择向右转向
+2.因为操作本身具有平凡性，不能判断policy gradient究竟有没有对初始网络实现有效的优化
+3.对于传感器未能覆盖的区域（过高或过低）的障碍物无法判断
+4.仍然不能解决墙体的影响
+
+第三次测试：
+加入了delta_state作为新的输入，但仍然没有明显的训练效果
+布置一个理想的障碍训练场地或许需要？
+设计一个更好的reward来解决墙体的影响（reward可以包含s_{t+1}吗？可以）
+把action的norm作为惩罚项加入loss训练一段时间，再移除；或者扩展维数作normalization
+
+PROTOC_ZIP=protoc-3.14.0.-linux-x86_64.zip
+curl -OL https://github.com/protocolbuffers/protobuf/releases/download/v3.14.0/$PROTOC_ZIP
+sudo unzip -o $PROTOC_ZIP -d /usr/local bin/protoc
+sudo unzip -o $PROTOC_ZIP -d /usr/local 'include/*'
+rm -f $PROTOC_ZIP
+
+sudo pip3 install --extra-index-url https://developer.download.nvidia.com/compute/redist/jp/v44 tensorflow==1.15.4+nv20.12
+
+https://www.jetsonhacks.com/2019/04/14/jetson-nano-use-more-memory/
+
+https://www.cnblogs.com/flyinggod/p/10096997.html
+
+
+Installing ROS and catkin for Ubuntu18:
+
+http://wiki.ros.org/cn/melodic/Installation/Ubuntu
+
+http://wiki.ros.org/catkin/Tutorials/create_a_workspace
+
+https://blog.csdn.net/virtue333/article/details/52820407
+
+https://blog.csdn.net/c417469898/article/details/106382727/
+
+https://blog.csdn.net/yinhuan1649/article/details/82667535
+
+Driving EAI's YDLIDAR X4:
+
+https://blog.csdn.net/nomil9/article/details/84777385
+
+https://cloud.tencent.com/developer/news/215695
+
+Installing python ydlidar API:
+
+git clone https://github.com/YDLIDAR/YDLidar-SDK.git
+cd YDLidar-SDK
+pip3 install .
+
+https://www.cnpython.com/pypi/pylidar3
+
+
+

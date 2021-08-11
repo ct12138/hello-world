@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="b0b7133e-6896-48f2-a38b-5db9f5119d7a" name="minicar04">
+        <fileTransfer accessType="SFTP" host="166.111.135.80" port="22004" sshConfigId="0db63a36-72ff-48a1-8bb0-949a2575f4dc" sshConfig="minicar04@166.111.135.80:22004 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

@@ -1,0 +1,38 @@
+Check Jetpack Version:
+head -n 1 /etc/nv_tegra_release
+
+R32 (release), REVISION: 4.4, GCID: 23942405, BOARD: t210ref, EABI: aarch64, DATE: Fri Oct 16 19:44:43 UTC 2020
+
+Install tensorflow:
+
+sudo apt-get update
+sudo apt-get install libhdf5-serial-dev hdf5-tools libhdf5-dev zlib1g-dev zip libjpeg8-dev liblapack-dev libblas-dev gfortran
+
+sudo apt-get install python3-pip
+sudo pip3 install -U pip testresources setuptools==49.6.0 
+
+sudo pip3 install -U numpy==1.16.1 future==0.18.2 mock==3.0.5 h5py==2.10.0 keras_preprocessing==1.1.1 keras_applications==1.0.8 gast==0.2.2 futures protobuf pybind11
+
+sudo pip3 install tensorboard==1.15.0 tensorflow-estimator==1.15.1 termcolor opt-einsum wrapt google-pasta astor>=0.6.0
+sudo pip3 install --extra-index-url https://developer.download.nvidia.com/compute/redist/jp/v44 tensorflow==1.15.4+nv20.12
+
+Install Jetcam:
+
+git clone https://github.com/NVIDIA-AI-IOT/jetcam
+cd jetcam
+sudo python3 setup.py install
+sudo pip3 install ipywidgets matplotlib
+
+Install Jupyter Notebook:
+pip3 install jupyterlab
+pip3 install notebook
+sudo gedit /etc/profile
+''export PATH=$PATH:~/.local/bin''
+source /etc/profile
+source ~/.bashrc
+
+Driving EAI YDlidar:
+pip3 install ydlidar3
+
+
+https://blog.csdn.net/nomil9/article/details/84777385

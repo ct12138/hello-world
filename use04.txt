@@ -1,0 +1,7 @@
+sudo chmod 777 /dev/ttyTHS1
+sudo chmod 777 /dev/ttyUSB0
+python3 blockage_avoidance4.py
+
+# 修改reward形式
+# 将reward加入discount
+# 考虑对距离限幅
